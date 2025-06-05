@@ -16,3 +16,13 @@ python discipline_program.py done 1
 ```
 
 Tasks are stored in `tasks.json` in the repository directory.
+
+## GUI
+
+You can manage tasks with a simple graphical interface:
+
+```bash
+python discipline_gui.py
+```
+
+The window lists existing tasks and lets you add or remove them.
