@@ -1,0 +1,9 @@
+[package]
+name = "holochat"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+hdk = "0.6.0-dev.11"
+serde = { version = "1", features = ["derive"] }
+holochain_serialized_bytes = "0.0.56"
