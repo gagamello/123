@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kwadratowy Plan Dnia</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <h1>Kwadratowy Plan Dnia (24h)</h1>
+        <p>
+          Wizualizacja czasu dla osób z ADHD: im dłuższe zadanie, tym większy
+          kwadrat.
+        </p>
+      </header>
+
+      <section class="panel">
+        <h2>Dodaj zadanie</h2>
+        <form id="task-form" class="task-form">
+          <label>
+            Nazwa
+            <input id="name" name="name" required placeholder="np. Praca głęboka" />
+          </label>
+          <label>
+            Start
+            <input id="start" name="start" type="time" required />
+          </label>
+          <label>
+            Czas (min)
+            <input
+              id="duration"
+              name="duration"
+              type="number"
+              min="15"
+              step="15"
+              value="60"
+              required
+            />
+          </label>
+          <button type="submit">Dodaj blok</button>
+        </form>
+      </section>
+
+      <section class="panel overview">
+        <h2>Podsumowanie 24h</h2>
+        <p id="summary"></p>
+        <div class="legend">
+          <span><i class="used"></i> Zaplanowane</span>
+          <span><i class="free"></i> Wolny czas</span>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Oś czasu (24h)</h2>
+        <p class="hint">
+          Przeciągnij blok w górę/dół, aby zmienić godzinę startu (snap co 15 min).
+        </p>
+        <div class="timeline-wrap">
+          <div id="hours" class="hours" aria-hidden="true"></div>
+          <div id="timeline" class="timeline" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Lista zadań</h2>
+        <ul id="task-list" class="task-list"></ul>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
