@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pracownia Handmade • Warsztaty i Zapisy</title>
+  <title>Pracownia Florystyczna • Kursy i Zapisy</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -13,10 +13,11 @@
       <a href="#rejestracja" class="cta">Zapisz się</a>
     </nav>
     <section class="hero-content">
-      <p class="tag">Rękodzieło z sercem</p>
-      <h2>Twórz piękne rzeczy podczas kameralnych szkoleń handmade</h2>
+      <p class="tag">Kwiaty i dekoracje z sercem</p>
+      <h2>Kursy florystyczne, pisanki i stroiki — twórz piękne ozdoby krok po kroku</h2>
       <p>
-        Organizujemy warsztaty dla początkujących i zaawansowanych. Wybierz termin,
+        Prowadzimy kameralne zajęcia: układanie kwiatów, florystyka użytkowa,
+        tworzenie pisanek i stroików sezonowych. Wybierz termin,
         zapisz się przez formularz albo porozmawiaj z botem, który pomoże Ci dobrać wolne miejsce.
       </p>
       <a href="#chat" class="cta secondary">Zapytaj bota</a>
@@ -25,7 +26,7 @@
 
   <main>
     <section id="terminy" class="card">
-      <h3>Dostępne terminy szkoleń</h3>
+      <h3>Dostępne terminy kursów</h3>
       <ul id="slotsList"></ul>
     </section>
 
@@ -44,7 +45,7 @@
         <label>Wybierz termin
           <select name="slot" id="slotSelect" required></select>
         </label>
-        <button type="submit">Zapisz na warsztat</button>
+        <button type="submit">Zapisz na kurs</button>
       </form>
       <p id="signupMessage" class="message"></p>
     </section>
@@ -53,7 +54,7 @@
       <h3>Bot zapisów</h3>
       <div id="chatWindow" class="chat-window"></div>
       <form id="chatForm" class="chat-form">
-        <input id="chatInput" type="text" placeholder="Np. Chcę się zapisać na 12.06" required />
+        <input id="chatInput" type="text" placeholder="Np. Chcę się zapisać na kurs stroików" required />
         <button type="submit">Wyślij</button>
       </form>
     </section>
@@ -77,7 +78,7 @@
   </main>
 
   <footer>
-    <p>© 2026 Pracownia Włóczki i Szperki • handmade • warsztaty • społeczność</p>
+    <p>© 2026 Pracownia Włóczki i Szperki • florystyka • pisanki • stroiki</p>
   </footer>
 
   <script src="app.js"></script>

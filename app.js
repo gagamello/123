@@ -1,12 +1,12 @@
 const defaultSlots = [
-  { id: "2026-06-12 17:00", title: "12.06.2026, 17:00 • Makrama", capacity: 5 },
-  { id: "2026-06-19 18:00", title: "19.06.2026, 18:00 • Biżuteria handmade", capacity: 6 },
-  { id: "2026-06-26 17:30", title: "26.06.2026, 17:30 • Świece sojowe", capacity: 4 }
+  { id: "2026-06-12 17:00", title: "12.06.2026, 17:00 • Układanie bukietów florystycznych", capacity: 5 },
+  { id: "2026-06-19 18:00", title: "19.06.2026, 18:00 • Kurs stroików sezonowych", capacity: 6 },
+  { id: "2026-06-26 17:30", title: "26.06.2026, 17:30 • Warsztaty pisanek dekoracyjnych", capacity: 4 }
 ];
 
 const state = {
-  slots: JSON.parse(localStorage.getItem("handmade_slots") || "null") || defaultSlots,
-  signups: JSON.parse(localStorage.getItem("handmade_signups") || "[]")
+  slots: JSON.parse(localStorage.getItem("florystyka_slots") || "null") || defaultSlots,
+  signups: JSON.parse(localStorage.getItem("florystyka_signups") || "[]")
 };
 
 const slotsList = document.getElementById("slotsList");
@@ -21,8 +21,8 @@ const chatForm = document.getElementById("chatForm");
 const chatInput = document.getElementById("chatInput");
 
 function save() {
-  localStorage.setItem("handmade_slots", JSON.stringify(state.slots));
-  localStorage.setItem("handmade_signups", JSON.stringify(state.signups));
+  localStorage.setItem("florystyka_slots", JSON.stringify(state.slots));
+  localStorage.setItem("florystyka_signups", JSON.stringify(state.signups));
 }
 
 function freePlaces(slotId) {
@@ -112,22 +112,23 @@ function userSpeak(text) {
 function botHandle(input) {
   const text = input.toLowerCase();
 
-  if (text.includes("wolne") || text.includes("termin")) {
+  if (text.includes("wolne") || text.includes("termin") || text.includes("kurs")) {
     const summary = state.slots
       .map(s => `${s.title} (${freePlaces(s.id)} wolnych)`)
       .join("; ");
-    return `Aktualne miejsca: ${summary}`;
+    return `Aktualne miejsca na kursy: ${summary}`;
   }
 
   if (text.includes("zapis") || text.includes("chcę")) {
-    const candidate = state.slots.find(s => text.includes(s.id.slice(5, 10).replace("-", ".")) || text.includes(s.title.slice(0, 5)));
+    const candidate = state.slots.find(s => text.includes("kwiat") && s.title.toLowerCase().includes("bukiet")
+      || text.includes("stroik") && s.title.toLowerCase().includes("stroik")
+      || text.includes("pisank") && s.title.toLowerCase().includes("pisanek"));
     const slot = candidate || state.slots.find(s => freePlaces(s.id) > 0);
 
     if (!slot) return "Niestety wszystkie terminy są pełne.";
 
-    const fakeName = "Uczestnik z czatu";
     const result = addSignup({
-      name: fakeName,
+      name: "Uczestnik z czatu",
       email: "chat@lokalnie.pl",
       phone: "000-000-000",
       slotId: slot.id,
@@ -140,7 +141,7 @@ function botHandle(input) {
       : result.message;
   }
 
-  return "Mogę: 1) pokazać wolne terminy, 2) zrobić szybki zapis na najbliższe szkolenie.";
+  return "Mogę: 1) pokazać wolne terminy kursów, 2) zrobić szybki zapis na kurs florystyczny, pisanki lub stroiki.";
 }
 
 chatForm.addEventListener("submit", e => {
@@ -165,4 +166,4 @@ clearDataButton.addEventListener("click", () => {
 
 renderSlots();
 renderAdmin();
-botSpeak("Cześć! Napisz „wolne terminy” albo „chcę się zapisać”.");
+botSpeak("Cześć! Napisz „wolne terminy”, „kurs kwiatów”, „kurs stroików” albo „chcę się zapisać”.");
