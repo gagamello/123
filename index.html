@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pracownia Florystyczna • Kursy i Zapisy</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav>
+      <h1>Pracownia „Włóczki i Szperki”</h1>
+      <a href="#rejestracja" class="cta">Zapisz się</a>
+    </nav>
+    <section class="hero-content">
+      <p class="tag">Kwiaty i dekoracje z sercem</p>
+      <h2>Kursy florystyczne, pisanki i stroiki — twórz piękne ozdoby krok po kroku</h2>
+      <p>
+        Prowadzimy kameralne zajęcia: układanie kwiatów, florystyka użytkowa,
+        tworzenie pisanek i stroików sezonowych. Wybierz termin,
+        zapisz się przez formularz albo porozmawiaj z botem, który pomoże Ci dobrać wolne miejsce.
+      </p>
+      <a href="#chat" class="cta secondary">Zapytaj bota</a>
+    </section>
+  </header>
+
+  <main>
+    <section id="terminy" class="card">
+      <h3>Dostępne terminy kursów</h3>
+      <ul id="slotsList"></ul>
+    </section>
+
+    <section id="rejestracja" class="card">
+      <h3>Szybki zapis</h3>
+      <form id="signupForm">
+        <label>Imię i nazwisko
+          <input type="text" name="name" required />
+        </label>
+        <label>Email
+          <input type="email" name="email" required />
+        </label>
+        <label>Telefon
+          <input type="tel" name="phone" required />
+        </label>
+        <label>Wybierz termin
+          <select name="slot" id="slotSelect" required></select>
+        </label>
+        <button type="submit">Zapisz na kurs</button>
+      </form>
+      <p id="signupMessage" class="message"></p>
+    </section>
+
+    <section id="chat" class="card">
+      <h3>Bot zapisów</h3>
+      <div id="chatWindow" class="chat-window"></div>
+      <form id="chatForm" class="chat-form">
+        <input id="chatInput" type="text" placeholder="Np. Chcę się zapisać na kurs stroików" required />
+        <button type="submit">Wyślij</button>
+      </form>
+    </section>
+
+    <section id="admin" class="card">
+      <h3>Panel administratora</h3>
+      <p>Podgląd zgłoszeń i wolnych miejsc (lokalnie w przeglądarce).</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Uczestnik</th>
+            <th>Kontakt</th>
+            <th>Termin</th>
+            <th>Źródło</th>
+          </tr>
+        </thead>
+        <tbody id="adminRows"></tbody>
+      </table>
+      <button id="clearData" class="danger">Wyczyść zapisy</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Pracownia Włóczki i Szperki • florystyka • pisanki • stroiki</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
